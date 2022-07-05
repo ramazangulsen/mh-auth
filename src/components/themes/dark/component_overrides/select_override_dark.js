@@ -4,6 +4,9 @@ export const menuItem = {
     },
     icon:{
         color:'#fafafa'
-    }
+    },
+    /* label: {
+        color:'#fafafa'
+    } */
 
 }

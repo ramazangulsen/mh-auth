@@ -39,5 +39,12 @@ export const lightTheme = createTheme({
      overrides:{
         MuiButton: button,
         MuiTextField: muiTextField
-    } 
+    } ,
+    
+        typography: {
+            fontFamily: [
+                'Inter', 
+            'sans-serif'
+            ].join(','),
+    }
 });

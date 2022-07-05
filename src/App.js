@@ -13,7 +13,7 @@ export const App = () => {
             <Box bgcolor = "background.default">
                 {App_bar(isDarkTheme)}
             </Box>
-            {containerMain(1,isDarkTheme)}
+            {containerMain(3,isDarkTheme)}
        </MuiThemeProvider>
     );
 };
