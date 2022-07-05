@@ -7,7 +7,7 @@ export const muiTextField= {
         color:colors.gray[400],
       },
       "& label.Mui-focused": {
-        color: colors.green[400],
+        color: colors.gray[400],
         borderBottomColor: "#1100FF",
       },
       "& input ": {

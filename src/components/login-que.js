@@ -139,7 +139,7 @@ export const BaseCom = (isDarkTheme) => {
         </Grid>
         <Grid item>
           <Box mt={2}>
-            <Button variant="text" color="#fafafa" fullWidth>
+            <Button variant="text"  fullWidth>
               Skip for now
             </Button>
           </Box>

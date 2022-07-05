@@ -87,6 +87,7 @@ export const Login = (isDarkTheme) => {
         </Grid>
         <Grid item>
           <GoogleButton
+            type = {isDarkTheme ? "light" : "dark"}
             style={{ width: "100%" }}
             onClick={() => {
               console.log("Google Button clicked");
@@ -99,7 +100,7 @@ export const Login = (isDarkTheme) => {
 
         <Grid item>
           <TextField
-            placeholder="email address"
+            placeholder="Email Address"
             variant="outlined"
             margin="normal"
             fullWidth
@@ -110,7 +111,7 @@ export const Login = (isDarkTheme) => {
             <TextField
               variant="outlined"
               margin="normal"
-              placeholder="password"
+              placeholder="Password"
               onChange={handleChange}
               type={values.showPassword ? "text" : "password"}
               InputProps={{

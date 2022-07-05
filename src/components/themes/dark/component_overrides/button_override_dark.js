@@ -1,19 +1,9 @@
-import { colors } from "@material-ui/core";
+import { colors } from "../../colors";
+import { alpha } from "@material-ui/core";
 
 export const button = {
   root: {
-    /* "&:hover": {
-            backgroundColor: "#07CEF1",
-            color: "#FFFFFF",
-        }, */
-    /* "&:active": {
-            backgroundColor: "#9FD311",
-            color: "#FFFFFF",
-        }, */
-    /* "&:focus": {
-            backgroundColor: "#F30606",
-            color: "#FFFFFF",
-        }, */
+   
     "&:disabled": {
       backgroundColor: "#07FF30",
       color: "#FFFFFF",
@@ -24,7 +14,29 @@ export const button = {
   },
   contained: {
     backgroundColor: colors.purple[400],
-    color: "#FFFFFF",
+    "&:hover": {
+      backgroundColor: colors.purple[500],
+      color: "#FFFFFF",
+    },
+
+    "&:focus": {
+      backgroundColor: colors.purple[600],
+      color: "#FFFFFF",
+    },
+    "&:disabled": {
+      backgroundColor: alpha(colors.purple[500], 0.3),
+    },
   },
-  
+  text: {
+    "&:hover": {
+      backgroundColor: alpha("#ffffff", 0.2),
+      color: "#FFFFFF",
+    },
+
+    "&:focus": {
+      backgroundColor: alpha("#ffffff", 0.3),
+      color: "#FFFFFF",
+    },
+   
+  },
 };

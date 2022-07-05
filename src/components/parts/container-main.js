@@ -6,7 +6,7 @@ import { BaseCom } from "../login-que";
 export const containerMain = (name, isDarkTheme) => {
     if (name === 1) {
         return(
-         <Grid container justifyContent="center" alignItems="center">
+         <Grid container justifyContent="center" alignItems="center" >
             <Grid item md={4}>
                 {Login(isDarkTheme)}
             </Grid>

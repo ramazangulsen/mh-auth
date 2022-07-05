@@ -1,6 +1,7 @@
 import {  createTheme } from "@material-ui/core";
 import {colors} from '../colors';
 import {button} from './component_overrides/button_override_light';
+import { menuItem } from "./component_overrides/select_override_light";
 import { muiTextField } from "./component_overrides/textfield_override_light";
 
 export const lightTheme = createTheme({
@@ -38,7 +39,8 @@ export const lightTheme = createTheme({
     },
      overrides:{
         MuiButton: button,
-        MuiTextField: muiTextField
+        MuiTextField: muiTextField,
+        MuiSelect: menuItem
     } ,
     
         typography: {

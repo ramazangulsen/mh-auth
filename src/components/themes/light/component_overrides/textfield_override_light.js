@@ -8,11 +8,11 @@ export const muiTextField= {
         color:colors.gray[400],
       },
       "& label.Mui-focused": {
-        color: colors.green[400],
+        color: colors.gray[400],
         
       },
       "& input ": {
-        color: colors.gray[500],
+        color: colors.gray[900],
       },
       
       "& .MuiOutlinedInput-root": {
