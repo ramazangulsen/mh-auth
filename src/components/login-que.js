@@ -3,9 +3,8 @@ import {
   Button,
   Grid,
   makeStyles,
-  withStyles,
+  MuiThemeProvider,
   Paper,
-  Menu,
   TextField,
   Typography,
 } from "@material-ui/core";
@@ -13,35 +12,20 @@ import React from "react";
 import { App_bar } from "./App_Bar";
 import pic from "./images/tell_us.png";
 import { MenuItem } from "@material-ui/core";
+import { connect } from "react-redux";
+import { darkTheme } from "./themes/dark/dark";
+import { lightTheme } from "./themes/light/light";
+import { CssBaseline } from "@mui/material";
 
-const LoginQue = (isDarkTheme) => {
-  return (
-    <Box bgcolor="background.default">
-      {App_bar(isDarkTheme)}
-      <Grid container justifyContent="center" alignItems="center">
-        <Grid item md={4}>
-          {BaseCom(isDarkTheme)}
-        </Grid>
-      </Grid>
-    </Box>
-  );
-};
-
-export default LoginQue;
-
-export const BaseCom = (isDarkTheme) => {
+const LoginQue = (props) => {
   const useStyles = makeStyles(() => ({
-    root: {
-      "& > *": {
-        width: "100%",
-      },
-    },
+   
 
     paperRoot: {
-      backgroundColor: isDarkTheme ? "#232323" : "#FFFFFFF",
+      backgroundColor: props.isDarkTheme ? "#232323" : "#FFFFFFF",
       padding: "40px 48px 40px 46px",
       minWidth: "400px",
-      color: isDarkTheme ? "#FFFFFF" : "#121212",
+      color: props.isDarkTheme ? "#FFFFFF" : "#121212",
     },
     formControl: {
       width: "100%",
@@ -61,9 +45,14 @@ export const BaseCom = (isDarkTheme) => {
   const handleChangeTeam = (event) => {
     setTeam(event.target.value);
   };
-
   return (
-    <Paper className={classes.paperRoot} elevation={10}>
+    <MuiThemeProvider theme={props.isDarkTheme ? darkTheme : lightTheme}>
+      <CssBaseline />
+      <Box bgcolor="background.default">
+        {App_bar(props.isDarkTheme)}
+        <Grid container justifyContent="center" alignItems="center">
+          <Grid item md={4}>
+          <Paper className={classes.paperRoot} elevation={10}>
       <Grid
         container
         direction="column"
@@ -139,12 +128,25 @@ export const BaseCom = (isDarkTheme) => {
         </Grid>
         <Grid item>
           <Box mt={2}>
-            <Button variant="text"  fullWidth>
+            <Button variant="text" fullWidth>
               Skip for now
             </Button>
           </Box>
         </Grid>
       </Grid>
     </Paper>
+          </Grid>
+        </Grid>
+      </Box>
+    </MuiThemeProvider>
   );
 };
+
+const mapStateToProps = (state) => {
+  return {
+    isDarkTheme: state.isDarkTheme,
+  };
+};
+
+export default connect(mapStateToProps)(LoginQue);
+

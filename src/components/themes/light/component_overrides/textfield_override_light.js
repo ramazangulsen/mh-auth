@@ -4,11 +4,15 @@ export const muiTextField= {
   
     root: {
      
+
+      '& .MuiInputBase-input': {
+        color: colors.gray[700]},
+
       "& label": {
         color:colors.gray[400],
       },
       "& label.Mui-focused": {
-        color: colors.gray[400],
+        color: colors.purple[400],
         
       },
       "& input ": {

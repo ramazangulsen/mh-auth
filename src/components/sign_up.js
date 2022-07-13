@@ -1,7 +1,6 @@
 import {
   Box,
   Button,
-  
   Divider,
   Grid,
   Link,
@@ -9,51 +8,40 @@ import {
   TextField,
   Typography,
 } from "@material-ui/core";
-import {
-  makeStyles,
- 
-} from "@material-ui/core/styles";
+import { makeStyles, MuiThemeProvider } from "@material-ui/core/styles";
 import React, { useState } from "react";
-
+import { CssBaseline } from "@material-ui/core";
 import { App_bar } from "./App_Bar";
 import pic from "./images/n_img.png";
 import GoogleButton from "react-google-button";
+import { connect } from "react-redux";
+import { darkTheme } from "./themes/dark/dark";
+import { lightTheme } from "./themes/light/light";
 
 
-const SignUp = () => {
-  const [isDarkTheme] = useState(false);
 
-  return (
-    <Box bgcolor="background.default">
-      {App_bar(isDarkTheme)}
-      <Grid
-        container
-        justifyContent="space-between"
-        alignItems="center"
-        spacing={2}
-      >
-        <Grid item md={8}>
-          {SignPage(isDarkTheme)}
-        </Grid>
-      </Grid>
-    </Box>
-  );
-};
 
-export default SignUp;
 
-export const SignPage = (isDarkTheme) => {
+const SignUp = (props) => {
   const useStyles = makeStyles(() => ({
     paperRoot: {
-      backgroundColor: isDarkTheme ? "#232323" : "#FFFFFFF",
+      backgroundColor: props.isDarkTheme ? "#232323" : "#FFFFFFF",
       padding: "40px 72px 37px 72px",
       minWidth: "400px",
-      color: isDarkTheme ? "#FFFFFF" : "#121212",
+      color: props.isDarkTheme ? "#FFFFFF" : "#121212",
     },
   }));
+  const [isDarkTheme] = useState(false);
   const classes = useStyles();
   return (
-    <Paper className={classes.paperRoot} elevation={10}>
+    <MuiThemeProvider theme={props.isDarkTheme ? darkTheme : lightTheme}>
+      <CssBaseline />
+      <Box bgcolor="background.default">
+        {App_bar(props.isDarkTheme)}
+        {
+          <Grid container justifyContent="center" alignItems="center">
+            <Grid item md={8}>
+            <Paper className={classes.paperRoot} elevation={10}>
       <Grid
         container
         direction="row"
@@ -164,9 +152,11 @@ export const SignPage = (isDarkTheme) => {
             </Grid>
             <Grid item>
               <Box mt={2}>
-                <Button variant="contained" fullWidth>
-                  Login
-                </Button>
+                <Link to="/sign_in">
+                  <Button variant="contained" fullWidth>
+                    Login
+                  </Button>
+                </Link>
               </Box>
             </Grid>
             <Grid item align="left">
@@ -185,5 +175,25 @@ export const SignPage = (isDarkTheme) => {
         </Grid>
       </Grid>
     </Paper>
+            </Grid>
+          </Grid>
+        }
+      </Box>
+    </MuiThemeProvider>
   );
 };
+
+const mapStateToProps = (state) => {
+  return {
+    isDarkTheme: state.isDarkTheme,
+  };
+};
+
+export default connect(mapStateToProps)(SignUp);
+
+
+
+  
+    
+  
+  

@@ -1,23 +1,26 @@
-import React, { useState } from "react";
-import { Box, CssBaseline, MuiThemeProvider } from "@material-ui/core";
-import { darkTheme } from './components/themes/dark/dark';
-import { lightTheme } from './components/themes/light/light';
-import { App_bar } from './components/App_Bar';
-import { containerMain } from "./components/parts/container-main";
+import React from "react";
 
-export const App = () => {
-    const [isDarkTheme, setIsDarkTheme] = useState(false);
-    return(
-       <MuiThemeProvider theme = {isDarkTheme ? darkTheme : lightTheme }>
-        <CssBaseline />
-            <Box bgcolor = "background.default" >
-                {App_bar(isDarkTheme)}
-                {containerMain(3,isDarkTheme)}
-                
-            </Box>
-            
-       </MuiThemeProvider>
-    );
+import { connect } from "react-redux";
+
+import { Routes, Route, Link, NavLink } from "react-router-dom";
+import SignUp from "./components/sign_up";
+import Login from "./components/sign_in";
+import LoginQue from "./components/login-que";
+const App = (props) => {
+  console.log(props.isDarkTheme);
+  return (
+    <Routes>
+      <Route path="/" element={<Login />} />
+      <Route path="/login-que" element={<LoginQue />} />
+      <Route path="/sign-up" element={<SignUp />} />
+    </Routes>
+  );
 };
 
+const mapStateToProps = (state) => {
+  return {
+    isDarkTheme: state.isDarkTheme,
+  };
+};
 
+export default connect(mapStateToProps)(App);
